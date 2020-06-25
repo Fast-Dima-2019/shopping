@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Customers from './components/Customers';
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+import AppNavbar from './components/AppNavbar';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">React Express Starter</h1>
-        </header>
-        <Customers />
+        <AppNavbar/>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
