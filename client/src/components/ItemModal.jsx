@@ -3,7 +3,6 @@ import {
   Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
 } from 'reactstrap'
 import { connect } from 'react-redux'
-import { v4 } from 'uuid'
 import { addItem } from '../actions/itemActions'
 
 class ItemModal extends React.Component{
@@ -19,7 +18,7 @@ class ItemModal extends React.Component{
 
   onSubmit = ev => {
     ev.preventDefault()
-    const newItem = { id: v4(), name: this.state.name }
+    const newItem = { name: this.state.name }
     this.props.addItem(newItem)
     //Закрываем модалку
     this.toggle()
