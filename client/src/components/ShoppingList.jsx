@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { getItems, deleteItem } from '../actions/itemActions'
 import PropTypes from 'prop-types'
 
-class ShoppingList extends React.Component{
+class ShoppingList extends React.Component {
 
   componentDidMount() {
     this.props.getItems()
@@ -22,24 +22,22 @@ class ShoppingList extends React.Component{
 
     return (
         <Container>
-
           <ListGroup>
 
             <TransitionGroup>
-              {items.map(({ id, name }) => (
+              {items.map(({ id, name, date }) => (
                   <CSSTransition key={id} timeout={50} classNames='fade'>
                     <ListGroupItem>
                       <Button className='remove-btn' color='danger' size='sm'
                               onClick={this.onDeleteClick.bind(this, id)}
                       >&times;</Button>
-                      {' -> ' + name}
+                      {date.substr(0,10)+' -> ' + name}
                     </ListGroupItem>
                   </CSSTransition>
               ))}
             </TransitionGroup>
 
           </ListGroup>
-
         </Container>
     )
   }
@@ -56,15 +54,3 @@ const mapStateToProps = (state) => ( {
 
 export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList)
 
-
-// <Button
-// color='dark' style={{ marginBottom: '2rem' }}
-// onClick={() => {
-//   const name = prompt('Enter item')
-//   if (name) {
-//     this.setState(state => ( {
-//       items: [...state.items, { id: uuid(), name }]
-//     } ))
-//   }
-// }}
-// >Add item</Button>
